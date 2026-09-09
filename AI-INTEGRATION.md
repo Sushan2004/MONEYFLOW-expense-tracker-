@@ -1,6 +1,6 @@
 # AI integration plan
 
-**Status: proposed design, not implemented.** No AI SDK, AI endpoint, or server is present in the reviewed project. This plan is provider-neutral; select a provider and model during implementation using its current documentation and costs.
+**Status: future model integration plan.** The app now includes a responsive local chat assistant, documented in [CHAT-ASSISTANT.md](CHAT-ASSISTANT.md). It calculates answers from local records using query matching, without an AI SDK, endpoint, or server. The model-powered expense-draft workflow below remains proposed and unimplemented. Select a provider and model only if that future phase is requested.
 
 ## First feature: turn a sentence into an expense draft
 

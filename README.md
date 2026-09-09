@@ -2,10 +2,11 @@
 
 A React application for manually tracking income, expenses, category budgets, and savings goals, with interactive reports and browser-based persistence.
 
-**Status:** local demo application. AI features are planned and are not implemented.
+**Status:** local demo application with a responsive, rules-based chat assistant. Answers are calculated from browser data; no external AI model or backend is used.
 
 ## Features
 
+- Responsive Moneyflow chat: full-screen mobile conversation and resizable desktop dock, with saved threads, data cards, and optional voice input.
 - Local demo account creation, login, and logout.
 - Add, edit, duplicate, delete, search, and filter transactions.
 - Track income sources and savings transfers.
@@ -27,7 +28,8 @@ A React application for manually tracking income, expenses, category budgets, an
 | Charts | Recharts, Chart.js, ECharts |
 | Icons | React Icons |
 | Persistence | Browser localStorage |
-| Backend / database / AI | Not implemented |
+| Assistant | Local query matching and computed summaries; no model API |
+| Backend / database | Not implemented |
 
 ## Run locally
 
@@ -66,7 +68,7 @@ npm run dev -- --open
 | `npm run build` | Generate production files in `dist/` |
 | `npm run preview` | Preview a production build locally |
 
-There are currently no test or lint scripts in `package.json`.
+Run `npm test` for the local-answer regression tests. No lint script is currently defined.
 
 ## Optional configuration
 
@@ -144,7 +146,7 @@ Application screens require a local demo session. This browser-side route guard 
 - Browser storage can be edited or cleared by the user; it is not a secure account system.
 - Demo password handling uses SHA-256 when available and falls back to the original string when unavailable. Do not use real passwords or treat this as production authentication.
 - Clearing browser storage can remove demo accounts and financial records.
-- AI assistance is not implemented; see [the AI integration plan](AI-INTEGRATION.md).
+- Chat supports spending, income, budgets, recurring-expense estimates, and goals through local query matching. It is not a general-purpose language model. See [chat documentation](CHAT-ASSISTANT.md) and [the future AI integration plan](AI-INTEGRATION.md).
 
 ## Verification before publishing
 

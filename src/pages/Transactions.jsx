@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useParams, useSearchParams } from 'react-router-dom';
 import EmptyState from '../components/EmptyState.jsx';
 import ErrorBanner from '../components/ErrorBanner.jsx';
 import FilterChipSelect from '../components/FilterChipSelect.jsx';
@@ -34,6 +34,9 @@ const TYPE_OPTIONS = [
 
 export default function Transactions() {
   const { state } = useAppState();
+  const [searchParams, setSearchParams] = useSearchParams();
+  const linkedMonth = searchParams.get('month');
+  const monthFilter = /^\d{4}-\d{2}$/.test(linkedMonth || '') ? linkedMonth : null;
   const { transactions, categories, accounts, status, error } = state;
   const [search, setSearch] = useState('');
   const [type, setType] = useState('all');
@@ -41,6 +44,14 @@ export default function Transactions() {
   const [accountId, setAccountId] = useState('all');
   const [dateRange, setDateRange] = useLocalStorage('et:tx-date-range', 'month');
   const [sort, setSort] = useLocalStorage('et:tx-sort', 'newest');
+  useEffect(() => {
+    setCategoryId(searchParams.get('category') || 'all');
+    setType('all');
+    setAccountId('all');
+    setSearch('');
+    if (searchParams.has('month')) setDateRange('all');
+  }, [searchParams]);
+
   const hasTransactions = transactions.length > 0;
   const hasAccounts = accounts.length > 0;
   const effectiveAccountId = hasAccounts ? accountId : 'all';
@@ -63,7 +74,8 @@ export default function Transactions() {
         if (!haystack.includes(query)) return false;
       }
 
-      if (dateRange !== 'all') {
+      if (monthFilter && !transaction.date.startsWith(monthFilter)) return false;
+      if (!monthFilter && dateRange !== 'all') {
         const today = new Date();
         const transactionDate = new Date(`${transaction.date}T00:00:00`);
 
@@ -101,7 +113,7 @@ export default function Transactions() {
     }
 
     return list;
-  }, [transactions, search, type, categoryId, effectiveAccountId, dateRange, sort]);
+  }, [monthFilter, transactions, search, type, categoryId, effectiveAccountId, dateRange, sort]);
 
   const grouped = useMemo(() => groupByDay(filtered), [filtered]);
   const categoryOptions = useMemo(
@@ -193,10 +205,14 @@ export default function Transactions() {
             ) : null}
             <FilterChipSelect
               icon="calendar"
-              value={dateRange}
-              options={DATE_OPTIONS}
-              onChange={setDateRange}
-              selected={dateRange !== 'all'}
+              value={monthFilter || dateRange}
+              options={monthFilter ? [{ value: monthFilter, label: monthFilter }, ...DATE_OPTIONS] : DATE_OPTIONS}
+              onChange={(value) => {
+                if (value === monthFilter) return;
+                setDateRange(value);
+                if (searchParams.has('month')) setSearchParams((previous) => { const next = new URLSearchParams(previous); next.delete('month'); return next; });
+              }}
+              selected={Boolean(monthFilter) || dateRange !== 'all'}
               secondary
               ariaLabel="Date range"
             />
@@ -226,6 +242,7 @@ export default function Transactions() {
                         setCategoryId('all');
                         setAccountId('all');
                         setDateRange('all');
+                        setSearchParams({});
                       }}
                     >
                       Clear filters

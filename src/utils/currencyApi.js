@@ -2,7 +2,7 @@ export const BASE_CURRENCY_CODE = 'USD';
 export const FALLBACK_CURRENCY_CODES = ['USD', 'EUR', 'GBP', 'INR', 'NPR', 'CAD', 'AUD', 'JPY'];
 
 const API_BASE_URL = 'https://api.unirateapi.com';
-const UNI_RATE_API_KEY = (import.meta.env.VITE_UNIRATE_API_KEY || '').trim();
+const UNI_RATE_API_KEY = (import.meta.env?.VITE_UNIRATE_API_KEY || '').trim();
 
 export function getUniRateApiKey() {
   return UNI_RATE_API_KEY;

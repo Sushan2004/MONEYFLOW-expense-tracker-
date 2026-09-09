@@ -2,7 +2,7 @@
 
 Repository: [Sushan2004/MONEYFLOW-expense-tracker-](https://github.com/Sushan2004/MONEYFLOW-expense-tracker-)
 
-This repository preserves the Git history from the original local expense tracker. The original README is retained in `README.original.md`. AI features are planned in `AI-INTEGRATION.md`.
+This repository preserves the Git history from the original local expense tracker. The original README is retained in `README.original.md`. The local chat assistant is documented in `CHAT-ASSISTANT.md`; future model-powered features are planned in `AI-INTEGRATION.md`.
 
 ## Set up on another computer
 
@@ -36,4 +36,4 @@ npm run build
 npm run preview
 ```
 
-Check the affected user flows with sample data. No test or lint scripts are currently defined. Publishing source to GitHub does not deploy a live application; hosting and a future AI backend are separate setup tasks.
+Check the affected user flows with sample data. Run `npm test` for answer-engine tests. No lint script is currently defined. Publishing source to GitHub does not deploy a live application; hosting and a future AI backend are separate setup tasks.
