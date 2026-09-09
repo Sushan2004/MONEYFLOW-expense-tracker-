@@ -1,259 +1,163 @@
-# Expense Tracker
+# MONEYFLOW — Expense Tracker
 
-A modern manual-first expense tracker built with React and Vite.
+A React application for manually tracking income, expenses, category budgets, and savings goals, with interactive reports and browser-based persistence.
 
-This project was created as a **CSC 365 final project** and is mainly for **learning, experimentation, and demo purposes**. The app focuses on helping users track income, expenses, budgets, savings goals, and reports in a clean dashboard-style experience.
+**Status:** local demo application. AI features are planned and are not implemented.
 
-## What this project is
+## Features
 
-This app is a frontend-heavy personal finance tracker where users can:
+- Local demo account creation, login, and logout.
+- Add, edit, duplicate, delete, search, and filter transactions.
+- Track income sources and savings transfers.
+- Create weekly, monthly, and yearly category budgets.
+- Manage savings goals and view progress.
+- Explore spending charts, category breakdowns, and money flow reports.
+- Customize categories, icons, colors, and appearance.
+- Export data as CSV or JSON.
+- Optional currency conversion through UniRate and merchant logos through Logo.dev.
 
-- create a local demo account
-- add income and expenses manually
-- organize spending with built-in and custom categories
-- set weekly, monthly, and yearly category budgets
-- track savings goals and savings transfers
-- view reports, charts, and money flow visualizations
-- change theme and display currency
-- export their data as CSV or JSON
+## Technology
 
-This project is designed to work **without a backend**. Most user data is saved locally in the browser for demo use.
+| Area | Implementation |
+| --- | --- |
+| Frontend | React 18, JavaScript, CSS |
+| Development and build | Vite 5 |
+| Routing | React Router 6 |
+| State | React Context and reducer |
+| Charts | Recharts, Chart.js, ECharts |
+| Icons | React Icons |
+| Persistence | Browser localStorage |
+| Backend / database / AI | Not implemented |
 
-## What we are doing this for
+## Run locally
 
-The goal of this project is to explore:
+Install Node.js with npm first. If your terminal says `command not found: node` or `command not found: npm`, complete the Node.js installer and reopen Terminal before continuing.
 
-- React application architecture
-- dashboard and finance UI design
-- local demo authentication
-- data visualization with charts
-- app state management and local persistence
-- integrating third-party APIs in a safe, optional way
+Verify installation:
 
-This is **not a production banking app**. It is a class/demo project made for fun and learning.
-
-## Tech stack
-
-- React 18
-- Vite
-- React Router
-- Recharts
-- Chart.js + `react-chartjs-2`
-- ECharts + `echarts-for-react`
-- React Icons
-
-## Main features
-
-### Public pages
-
-- Landing page
-- Local demo auth page
-- Custom 404 page
-
-### Auth
-
-- Sign up and log in locally
-- Demo users are stored in browser `localStorage`
-- Session persists after refresh
-- Logout supported
-
-### Dashboard
-
-- Monthly cashflow hero
-- Spending-over-time chart
-- Recent transactions
-- Spending by category
-- Savings progress
-
-### Transactions
-
-- Add, edit, duplicate, and delete transactions
-- Expense, income, and savings transfer support
-- Merchant logos with fallback category icons
-- Search, filter, sort, and date range controls
-
-### Categories
-
-- Built-in default categories
-- Custom category creation
-- Custom icon and color support
-- Delete protection for built-in categories
-
-### Budgeting
-
-- Weekly, monthly, and yearly category budgets
-- Budget thresholds and warning states
-- Budget progress tracking from real expense data
-
-### Reports
-
-- KPI cards
-- Spending breakdown doughnut chart
-- Expandable chart modal
-- Money Flow / Sankey chart
-- Insight cards based on current report period
-
-### Savings / Goals
-
-- Savings goals
-- Transfer money into goals
-- Income sources list
-- Savings progress display
-
-### Settings
-
-- Appearance theme selection
-- Display currency selection
-- Export data as CSV or JSON
-- Local session controls
-
-## Local/demo behavior
-
-This project currently works as a **local demo app**:
-
-- authentication is local only
-- user data is stored in browser storage
-- there is no backend database
-- there is no real bank connection
-
-Important:
-
-- this is **not secure production auth**
-- data is tied to the browser where it was created
-- clearing browser storage can remove the saved demo data
-
-## Features that need your own API key
-
-Some parts of the app are optional integrations and need your own API credentials to work fully.
-
-### 1. Currency conversion
-
-Used for display-only currency conversion across the app.
-
-- API: **UniRate**
-- File: `unirateapi.env`
-- Required variable:
-
-```env
-VITE_UNIRATE_API_KEY=your_key_here
+```bash
+node -v
+npm -v
 ```
 
-Without this key:
-
-- the app still works
-- amounts stay in the base currency (`USD`)
-- currency conversion will show as unavailable
-
-Related code:
-
-- [src/utils/currencyApi.js](C:\Users\RYET\Downloads\website\src\utils\currencyApi.js)
-- [src/pages/Settings.jsx](C:\Users\RYET\Downloads\website\src\pages\Settings.jsx)
-
-### 2. Merchant logos
-
-Used to show merchant logos for known expense merchants.
-
-- API: **Logo.dev**
-- File: `logodevapi.env`
-- Required variable:
-
-```env
-VITE_LOGODEV_API_KEY=your_key_here
-```
-
-Without this key:
-
-- the app still works
-- merchant logos will not load
-- the UI falls back to category icons
-
-Related code:
-
-- [src/utils/logoDev.js](C:\Users\RYET\Downloads\website\src\utils\logoDev.js)
-- [src/hooks/useMerchantLogo.js](C:\Users\RYET\Downloads\website\src\hooks\useMerchantLogo.js)
-
-## Features that are placeholders or not fully implemented
-
-These parts are intentionally incomplete or demo-only:
-
-- **Google login**: UI only, not connected to real OAuth
-- **GitHub login**: UI only, not connected to real OAuth
-- **Bank sync / Connect bank account**: placeholder only, no Plaid/live bank integration yet
-- **Production auth/security**: not implemented
-- **Backend/database sync**: not implemented
-
-## 404 page
-
-The app includes a custom 404 page for unknown routes.
-
-- Fallback route is defined in [src/App.jsx](C:\Users\RYET\Downloads\website\src\App.jsx)
-- 404 page component is [src/pages/NotFound.jsx](C:\Users\RYET\Downloads\website\src\pages\NotFound.jsx)
-
-If a user visits a bad URL, they will see:
-
-- `404`
-- `Page not found`
-- a button to go to `/dashboard`
-- a button to go back to `/`
-
-## Project routes
-
-### Public
-
-- `/` - landing page
-- `/auth` - sign up / log in
-- `/signup` - redirects to sign up mode
-- `/about` - redirects to landing about section
-
-### Protected app routes
-
-- `/dashboard`
-- `/transactions`
-- `/transactions/:id`
-- `/add`
-- `/budget`
-- `/reports`
-- `/categories`
-- `/wallet`
-- `/goals`
-- `/settings`
-
-## Running locally
-
-### 1. Install dependencies
+Inside the project folder:
 
 ```bash
 npm install
+npm run dev -- --open
 ```
 
-### 2. Add optional API keys
+The configured development port is 5173. Use the URL printed by Vite if that port is occupied. Press Control + C to stop the server.
 
-Create or update these files in the project root:
+For the original local folder on this Mac:
 
-- `unirateapi.env`
-- `logodevapi.env`
+```bash
+cd "/Users/sushan_adhikari/Desktop/expense-tracker-main"
+npm install
+npm run dev -- --open
+```
 
-Example:
+## Commands
 
-```env
+| Command | Purpose |
+| --- | --- |
+| `npm install` | Install dependencies |
+| `npm run dev` | Start development server |
+| `npm run build` | Generate production files in `dist/` |
+| `npm run preview` | Preview a production build locally |
+
+There are currently no test or lint scripts in `package.json`.
+
+## Optional configuration
+
+The app runs without API keys. Currency conversion and merchant logos need separate credentials.
+
+The Vite configuration reads these custom files in the project root:
+
+```dotenv
 # unirateapi.env
-VITE_UNIRATE_API_KEY=your_key_here
+VITE_UNIRATE_API_KEY=replace_with_your_key
 ```
 
-```env
+```dotenv
 # logodevapi.env
-VITE_LOGODEV_API_KEY=your_key_here
+VITE_LOGODEV_API_KEY=replace_with_your_key
 ```
 
-### 3. Start the dev server
+Restart the development server after changing configuration. Without these integrations, the app uses its base-currency behavior and category-icon fallbacks.
 
-```bash
-npm run dev
+Add both custom filenames to `.gitignore` before adding credentials. Variables prefixed with `VITE_` are exposed to the browser; ignoring the files does not make bundled values secret. Private credentials, including any future AI key, belong on a backend. See [Vite environment documentation](https://vite.dev/guide/env-and-mode).
+
+## Project structure
+
+```text
+public/
+  data/seed.json          Sample data asset
+src/
+  components/            Shared controls, layout, and charts
+  data/                  Default categories
+  hooks/                 Storage, fetching, and logo hooks
+  pages/                 Application screens
+  state/AppState.jsx     Application state, reducer, persistence
+  state/SessionState.jsx Local demo session handling
+  utils/                 Calculations, exports, formatting, integrations
+  App.jsx                Routes and route guards
+  main.jsx               React entry point
+  styles.css             Application styles
+vite.config.js           Vite and custom environment-file configuration
 ```
 
-### 4. Build for production
+## Architecture and data
 
-```bash
-npm run build
-```
+Pages and components read shared state through React Context. User actions dispatch reducer updates in `AppState.jsx`. The app persists each user's application state under `et:app-state:<userId>` in localStorage; `et:app-state` is also declared as a legacy storage key. Demo account records use `et:auth-users`, and the active user ID uses `et:auth-session`.
 
+Main records include transactions, categories, budgets, income sources, income entries, goals, and savings transfers. Income entries can reference a corresponding transaction. Budgets identify a category and a weekly, monthly, or yearly period. Savings transfers reference a goal.
+
+Reports derive values from the stored records using utility selectors. Currency conversion is for display, with USD as the base currency. It does not create bank transactions.
+
+## Routes
+
+| Route | Screen |
+| --- | --- |
+| `/` | Landing page; authenticated users normally redirect to dashboard |
+| `/auth` | Demo login and sign-up |
+| `/signup` | Redirect to sign-up mode or dashboard |
+| `/about` | Redirect to landing page About section |
+| `/dashboard` | Overview |
+| `/transactions` | Transaction list |
+| `/transactions/:id` | Transaction details |
+| `/add` | Add an entry |
+| `/budget` | Category budgets |
+| `/reports` | Reports and visualizations |
+| `/categories` | Category management |
+| `/wallet` | Wallet screen |
+| `/goals` | Savings goals |
+| `/settings` | Preferences and exports |
+| Other paths | 404 page |
+
+Application screens require a local demo session. This browser-side route guard is not server-side authorization.
+
+## Current limitations
+
+- No backend database, cross-device synchronization, or real bank connection.
+- Google and GitHub login are placeholders rather than connected OAuth flows.
+- Browser storage can be edited or cleared by the user; it is not a secure account system.
+- Demo password handling uses SHA-256 when available and falls back to the original string when unavailable. Do not use real passwords or treat this as production authentication.
+- Clearing browser storage can remove demo accounts and financial records.
+- AI assistance is not implemented; see [the AI integration plan](AI-INTEGRATION.md).
+
+## Verification before publishing
+
+Run `npm run build`, then `npm run preview`. Manually check sign-up, login, transaction creation/edit/deletion, budgets, goals, reports, exports, and persistence after refresh. Verify that two demo accounts show their respective data and that the app works without optional API keys.
+
+These are recommended checks, not a claim that this documentation review executed them.
+
+## GitHub and future work
+
+See [the GitHub setup guide](GITHUB-SETUP.md) for publishing instructions and [the AI integration plan](AI-INTEGRATION.md) for a proposed first AI feature.
+
+Original project repository: [expense-tracker-main](https://github.com/Sushan2004/expense-tracker-main). See also [the original README](README.original.md).
+
+## Attribution and license
+
+The supplied README describes this code as a CSC 365 final project. Preserve applicable original credits and license terms when publishing a derivative. Add the original repository URL and describe your own contributions when that information is available. No LICENSE file was present in the reviewed folder; this documentation does not assign a new license or establish ownership.
