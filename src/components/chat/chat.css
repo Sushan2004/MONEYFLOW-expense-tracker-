@@ -93,3 +93,7 @@
   .chat-docked .dashboard-hero__net { text-align: left; }
   .chat-docked .topbar { flex-wrap: wrap; gap: 12px; }
 }
+
+/* Hidden page content must not widen the mobile layout viewport behind the dialog. */
+.app.chat-mobile-open > .main { overflow: hidden; }
+.app.chat-mobile-open { overflow: clip; }

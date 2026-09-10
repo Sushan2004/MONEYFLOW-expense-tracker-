@@ -67,7 +67,7 @@ export default function ChatAssistant({ userId, onDockChange }) {
   const latestState = useRef(state);
   latestState.current = state;
   const active = saved.threads.find((t) => t.id === saved.activeId) || saved.threads[0];
-  const isMac = /Mac|iPhone|iPad/.test(navigator.userAgentData?.platform || navigator.platform || '');
+  const isMac = /mac|iphone|ipad/i.test(navigator.userAgentData?.platform || navigator.platform || '');
   const shortcut = isMac ? '⌘ /' : 'Ctrl /';
   const Speech = window.SpeechRecognition || window.webkitSpeechRecognition;
   const close = useCallback(() => {
@@ -127,11 +127,13 @@ export default function ChatAssistant({ userId, onDockChange }) {
     const app = panel.current?.closest('.app');
     const background = app ? [...app.children].filter((el) => !el.classList.contains('chat-panel')) : [];
     const previous = background.map((el) => el.inert);
+    app?.classList.add('chat-mobile-open');
     background.forEach((el) => { el.inert = true; });
     const oldOverflow = document.body.style.overflow;
     document.body.style.overflow = 'hidden';
     return () => {
       background.forEach((el, i) => { el.inert = previous[i]; });
+      app?.classList.remove('chat-mobile-open');
       document.body.style.overflow = oldOverflow;
     };
   }, [open, mobile]);

@@ -39,6 +39,8 @@ npm run build
 
 Automated coverage includes month/year boundaries, category links, income and transfer exclusions, monthly/weekly/yearly budgets, empty records, month-end and leap-year recurrence, recurring-history deduplication, goals, and unsupported queries that do not mutate state.
 
+[Browser verification report](docs/verification/README.md): 33 checks pass in isolated Chrome, plus 10 data tests. Mac shortcut detection and narrow-screen background overflow were corrected during verification.
+
 Physical-device acceptance checks still needed:
 
 - iOS Safari and Android Chrome: portrait/landscape, keyboard show/hide, scroll, safe areas, close and short/long drag gestures.
@@ -46,4 +48,4 @@ Physical-device acceptance checks still needed:
 - Refresh/reopen history, switch demo accounts, deny microphone permission, and test a browser without SpeechRecognition.
 - Light/dark themes, 200% text zoom, reduced motion, and screen-reader announcements/focus order.
 
-A successful build and data tests do not certify behavior on physical devices. No native-device or browser interaction test was run for this change.
+Browser tests use simulated mobile viewports, Windows platform metadata, keyboard viewport changes, and speech events. They do not certify physical-device behavior; see the linked report for exact coverage and remaining checks.
