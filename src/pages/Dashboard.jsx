@@ -1,3 +1,4 @@
+import useGreeting from '../hooks/useGreeting.js';
 import PropTypes from 'prop-types';
 import { useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
@@ -12,7 +13,7 @@ import Skeleton from '../components/Skeleton.jsx';
 import TransactionRow from '../components/TransactionRow.jsx';
 import { useAppState } from '../state/AppState.jsx';
 import { getCategoryAccentStyle } from '../utils/categoryAppearance.js';
-import { formatCurrency, greetingFor, isoMonth } from '../utils/format.js';
+import { formatCurrency, isoMonth } from '../utils/format.js';
 import {
   getDashboardCategorySpending,
   getDashboardChartSeries,
@@ -33,7 +34,6 @@ const CHART_GRANULARITIES = [
 export default function Dashboard() {
   const { state, resolvedTheme } = useAppState();
   const {
-    user,
     accounts,
     transactions,
     categories,
@@ -44,6 +44,7 @@ export default function Dashboard() {
     status,
     error,
   } = state;
+  const greeting = useGreeting();
   const currentMonth = isoMonth();
   const [chartGranularity, setChartGranularity] = useState('daily');
   const [selectedMonth, setSelectedMonth] = useState(currentMonth);
@@ -125,7 +126,7 @@ export default function Dashboard() {
       <header className="topbar dashboard-topbar">
         <div className="topbar__title-block">
           <h1 className="topbar__title">
-            {greetingFor()}, {user?.name?.split(' ')[0] || 'there'}
+            {greeting}
           </h1>
           <span className="topbar__date">{dateLabel}</span>
         </div>

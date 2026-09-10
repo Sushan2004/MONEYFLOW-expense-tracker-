@@ -402,7 +402,9 @@ function normalizeState(payload) {
 
   return {
     user: source.user ? structuredClone(source.user) : null,
-    themeMode: normalizeThemeMode(source.themeMode),
+    // Apply the redesigned default once; later appearance choices stay intact.
+    themeVersion: 2,
+    themeMode: source.themeVersion === 2 ? normalizeThemeMode(source.themeMode) : 'dark',
     currency: normalizeCurrencyState(source.currency),
     accounts: cloneList(source.accounts),
     categories: mergeCategories(source.categories),
@@ -444,6 +446,7 @@ function readStoredAppState(userId) {
 function getPersistableState(state) {
   return {
     user: state.user ? structuredClone(state.user) : null,
+    themeVersion: 2,
     themeMode: normalizeThemeMode(state.themeMode),
     currency: getPersistableCurrencyState(state.currency),
     accounts: cloneList(state.accounts),

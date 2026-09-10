@@ -1,3 +1,4 @@
+import useGreeting from '../hooks/useGreeting.js';
 import { Link } from 'react-router-dom';
 import Icon from '../components/Icon.jsx';
 import { useSession } from '../state/SessionState.jsx';
@@ -36,6 +37,7 @@ const FEATURES = [
 ];
 
 export default function Landing() {
+  const greeting = useGreeting();
   const { isAuthenticated } = useSession();
   const primaryCtaTarget = isAuthenticated ? '/dashboard' : '/auth?mode=signup';
 
@@ -126,7 +128,7 @@ export default function Landing() {
 
                 <div className="landing-preview__dashboard-top">
                   <div>
-                    <div className="landing-preview__dashboard-greeting">Good evening, Ayush</div>
+                    <div className="landing-preview__dashboard-greeting">{greeting}</div>
                     <div className="landing-preview__dashboard-date">Tuesday, April 28, 2026</div>
                   </div>
                   <div className="landing-preview__dashboard-action">+ Add entry</div>

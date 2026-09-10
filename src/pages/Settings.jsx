@@ -22,13 +22,13 @@ const THEME_OPTIONS = [
   {
     value: 'light',
     label: 'Light mode',
-    hint: 'Bright canvas with soft mint accents',
+    hint: 'Porcelain canvas with periwinkle accents',
     icon: 'sun',
   },
   {
     value: 'dark',
     label: 'Dark mode',
-    hint: 'Deep Forest dark theme',
+    hint: 'Charcoal with periwinkle accents',
     icon: 'moon',
   },
   {
@@ -289,7 +289,7 @@ export default function Settings() {
                       <span className="appearance-option__hint">{option.hint}</span>
                       {option.value === 'system' ? (
                         <span className="appearance-option__meta">
-                          Currently using {systemTheme === 'dark' ? 'Deep Forest dark' : 'Light mode'}
+                          Currently using {systemTheme === 'dark' ? 'Charcoal dark' : 'Light mode'}
                         </span>
                       ) : null}
                     </span>

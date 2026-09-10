@@ -21,7 +21,7 @@ export default function Sidebar({ user }) {
             <path d="M4 9.5 L7.5 13 L14.5 5.5" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
         </span>
-        <span className="sidebar__brand-name">Expense Tracker</span>
+        <span className="sidebar__brand-name">Moneyflow</span>
       </div>
       <nav className="sidebar__nav">
         {NAV.map((item) => (

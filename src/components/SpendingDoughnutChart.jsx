@@ -39,11 +39,11 @@ const centerTextPlugin = {
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
     ctx.fillStyle = pluginOptions?.amountColor || '#0E1F17';
-    ctx.font = `600 ${amountFontSize}px Inter, system-ui, sans-serif`;
+    ctx.font = `600 ${amountFontSize}px Commissioner, system-ui, sans-serif`;
     ctx.fillText(amountText, centerX, centerY - 8);
 
     ctx.fillStyle = pluginOptions?.labelColor || '#6B7A73';
-    ctx.font = `500 ${labelFontSize}px Inter, system-ui, sans-serif`;
+    ctx.font = `500 ${labelFontSize}px Commissioner, system-ui, sans-serif`;
     ctx.fillText(labelText, centerX, centerY + amountFontSize * 0.55);
     ctx.restore();
   },
@@ -118,12 +118,12 @@ export default function SpendingDoughnutChart({
         boxPadding: 4,
         padding: 12,
         titleFont: {
-          family: 'Inter, system-ui, sans-serif',
+          family: 'Commissioner, system-ui, sans-serif',
           size: 13,
           weight: '600',
         },
         bodyFont: {
-          family: 'Inter, system-ui, sans-serif',
+          family: 'Commissioner, system-ui, sans-serif',
           size: 12,
         },
         callbacks: {

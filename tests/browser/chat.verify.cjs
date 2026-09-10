@@ -13,7 +13,7 @@ const month = `${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,'0')}`
 const previous = new Date(now.getFullYear(),now.getMonth()-1,1);
 const lastMonth = `${previous.getFullYear()}-${String(previous.getMonth()+1).padStart(2,'0')}`;
 const data = {
-  user: { id:'verify-a', email:'verify-a@example.test', name:'Verification A' }, themeMode:'light', accounts:[],
+  user: { id:'verify-a', email:'verify-a@example.test', name:'Verification A' }, themeMode:'light', themeVersion:2, accounts:[],
   transactions:[
     {id:'food-a',merchant:'Test groceries',categoryId:'cat-food',amount:-300,type:'expense',date:`${month}-01`},
     {id:'food-b',merchant:'Test lunch',categoryId:'cat-food',amount:-120,type:'expense',date:`${month}-02`},
@@ -195,6 +195,30 @@ async function shot(page,name){await page.waitForTimeout(650);await page.screens
   await query(v.page,'goals');assert.match(await v.page.locator('.chat-notice').first().innerText(),/could not be saved/);assert.match(await v.page.locator('.chat-message--assistant').last().innerText(),/Test trip/);
  });
  await check('No browser runtime exceptions',async()=>assert.deepEqual([...d.errors,...w.errors,...m.errors,...v.errors],[]));
+ await check('Premium default migrates once without changing financial records',async()=>{
+  await page.evaluate(()=>{const k='et:app-state:verify-a';const s=JSON.parse(localStorage.getItem(k));delete s.themeVersion;s.themeMode='light';window.verifyTransactions=JSON.stringify(s.transactions);localStorage.setItem('verify-before-theme',window.verifyTransactions);localStorage.setItem(k,JSON.stringify(s));});
+  await page.goto(baseURL+'/dashboard');await page.waitForFunction(()=>document.documentElement.dataset.theme==='dark');
+  assert.equal(await page.evaluate(()=>getComputedStyle(document.documentElement).getPropertyValue('--page-bg').trim()),'#101115');
+  assert.equal(await page.evaluate(()=>JSON.stringify(JSON.parse(localStorage.getItem('et:app-state:verify-a')).transactions)===localStorage.getItem('verify-before-theme')),true);
+  if(await page.locator('#moneyflow-chat').count())await page.getByRole('button',{name:'Close assistant',exact:true}).click();
+  await shot(page,'premium-desktop');
+ });
+ await check('Premium mobile and explicit light preference persist',async()=>{
+  await page.setViewportSize({width:390,height:844});await shot(page,'premium-mobile');
+  await page.evaluate(()=>{const k='et:app-state:verify-a';const s=JSON.parse(localStorage.getItem(k));s.themeMode='light';localStorage.setItem(k,JSON.stringify(s));});await page.reload();await page.waitForFunction(()=>document.documentElement.dataset.theme==='light');
+ });
+ await check('Greeting omits names and changes at noon while open',async()=>{
+  await page.clock.install({time:new Date(2026,8,10,11,59,50)});await page.reload();
+  assert.equal(await page.locator('h1').innerText(),'Good morning');
+  await page.clock.fastForward(30000);assert.equal(await page.locator('h1').innerText(),'Good afternoon');
+  await page.clock.setFixedTime(new Date(2026,8,10,23,0,0));await page.reload();assert.equal(await page.locator('h1').innerText(),'Good afternoon');
+ });
+ await check('Landing preview uses anonymous greeting and premium surface',async()=>{
+  await page.evaluate(()=>{const k='et:app-state:verify-a';const s=JSON.parse(localStorage.getItem(k));s.themeMode='dark';localStorage.setItem(k,JSON.stringify(s));});
+  await page.setViewportSize({width:1440,height:1000});await page.goto(baseURL+'/#preview');
+  assert.equal(await page.locator('.landing-preview__dashboard-greeting').innerText(),'Good afternoon');
+  await page.locator('.landing-preview__dashboard').screenshot({path:path.join(output,'premium-landing-preview.png')});
+ });
  await browser.close();
  fs.writeFileSync(path.join(output,'results.json'),JSON.stringify({date:new Date().toISOString(),browser:'Chrome headless',results},null,2));
  console.log(JSON.stringify({passed:results.filter(x=>x.status==='PASS').length,failed:results.filter(x=>x.status==='FAIL').length,output}));

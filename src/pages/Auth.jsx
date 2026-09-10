@@ -201,7 +201,7 @@ export default function Auth() {
                       type="text"
                       value={signupForm.firstName}
                       onChange={updateSignup('firstName')}
-                      placeholder="Ayush"
+                      placeholder="First name"
                       autoComplete="given-name"
                       className={signupErrors.firstName ? 'is-error' : ''}
                     />
