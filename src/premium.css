@@ -138,3 +138,19 @@ html[data-theme="dark"] .reports-category-breakdown__transaction { background: v
   .dashboard-hero__metrics { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 .landing-preview__dashboard-chart-foot span:last-child { color: var(--accent-soft-ink); }
+/* Keep typed and autofilled text legible in both appearance modes. */
+.auth-card__field input:focus {
+  background: var(--surface-muted);
+  color: var(--ink);
+  caret-color: var(--ink);
+  border-color: var(--emerald);
+  box-shadow: 0 0 0 3px var(--focus-ring);
+}
+.auth-card__field input:is(:autofill, :-webkit-autofill) {
+  -webkit-text-fill-color: var(--ink);
+  caret-color: var(--ink);
+  box-shadow: inset 0 0 0 1000px var(--surface-muted);
+}
+.auth-card__field input:is(:autofill, :-webkit-autofill):focus {
+  box-shadow: inset 0 0 0 1000px var(--surface-muted), 0 0 0 3px var(--focus-ring);
+}
