@@ -13,12 +13,12 @@ A React application for manually tracking income, expenses, category budgets, an
 - Create weekly, monthly, and yearly category budgets.
 - Manage savings goals and view progress.
 - Explore spending charts, category breakdowns, and money flow reports.
-- Premium charcoal theme with periwinkle accents and Commissioner typography, plus light and system appearance options.
+- Default Alpine light theme with a mountain backdrop and glacier-blue accents; purple-charcoal dark mode and system appearance remain available.
 - Customize categories, icons, and colors.
 - Export data as CSV or JSON.
 - Optional currency conversion through UniRate and merchant logos through Logo.dev.
 
-See [theme previews and verification](docs/premium-theme/README.md).
+See [current theme previews and verification](docs/alpine-theme/README.md).
 
 ## Technology
 

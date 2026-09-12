@@ -1,0 +1,154 @@
+{
+  "date": "2026-09-10T13:58:17.558Z",
+  "browser": "Chrome headless",
+  "results": [
+    {
+      "name": "macOS shortcut hint recognizes userAgentData macOS",
+      "status": "PASS"
+    },
+    {
+      "name": "Desktop dock is 380px and reserves content space",
+      "status": "PASS"
+    },
+    {
+      "name": "Mac Cmd+/ closes and reopens dock",
+      "status": "PASS"
+    },
+    {
+      "name": "Spending chip yields $420 and an inline chart",
+      "status": "PASS"
+    },
+    {
+      "name": "Budget chip reports $420 of $400 and overspending",
+      "status": "PASS"
+    },
+    {
+      "name": "Shift+Enter inserts a newline; Enter sends once",
+      "status": "PASS"
+    },
+    {
+      "name": "Desktop pointer resize and keyboard bounds",
+      "status": "PASS"
+    },
+    {
+      "name": "Threads and desktop preferences survive reload",
+      "status": "PASS"
+    },
+    {
+      "name": "Category link navigates to matching filtered records",
+      "status": "PASS"
+    },
+    {
+      "name": "Transaction reference opens transaction detail",
+      "status": "PASS"
+    },
+    {
+      "name": "Desktop and narrow desktop have no page overflow",
+      "status": "PASS"
+    },
+    {
+      "name": "Chat and chart render in dark theme",
+      "status": "PASS"
+    },
+    {
+      "name": "Account B cannot see account A chat; returning restores A",
+      "status": "PASS"
+    },
+    {
+      "name": "Corrupt saved chat recovers without a crash",
+      "status": "PASS"
+    },
+    {
+      "name": "Upcoming bills chip returns labeled estimate and record link",
+      "status": "PASS"
+    },
+    {
+      "name": "Last-month reference preserves its period",
+      "status": "PASS"
+    },
+    {
+      "name": "Unsupported speech API hides microphone",
+      "status": "PASS"
+    },
+    {
+      "name": "Windows Ctrl+/ toggles with correct hint",
+      "status": "PASS"
+    },
+    {
+      "name": "Mobile FAB clears bottom navigation",
+      "status": "PASS"
+    },
+    {
+      "name": "Mobile is full viewport modal with inert background",
+      "status": "PASS"
+    },
+    {
+      "name": "Mobile quick reply renders card and chart",
+      "status": "PASS"
+    },
+    {
+      "name": "Mobile controls have 44px touch targets",
+      "status": "PASS"
+    },
+    {
+      "name": "Short drag keeps modal open; long drag dismisses",
+      "status": "PASS"
+    },
+    {
+      "name": "Mobile focus cycles inside dialog",
+      "status": "PASS"
+    },
+    {
+      "name": "Simulated keyboard viewport keeps composer visible",
+      "status": "PASS"
+    },
+    {
+      "name": "Mobile category navigation dismisses chat",
+      "status": "PASS"
+    },
+    {
+      "name": "Mobile layout fits narrow and landscape viewports",
+      "status": "PASS"
+    },
+    {
+      "name": "Reduced motion disables mobile slide animation",
+      "status": "PASS"
+    },
+    {
+      "name": "Mobile Enter inserts newline without sending",
+      "status": "PASS"
+    },
+    {
+      "name": "Mock voice dictation populates draft and does not send",
+      "status": "PASS"
+    },
+    {
+      "name": "Mock voice permission denial gives usable fallback",
+      "status": "PASS"
+    },
+    {
+      "name": "Chat storage quota failure shows notice and keeps chat usable",
+      "status": "PASS"
+    },
+    {
+      "name": "No browser runtime exceptions",
+      "status": "PASS"
+    },
+    {
+      "name": "Alpine light default migrates once without changing financial records",
+      "status": "PASS"
+    },
+    {
+      "name": "Premium mobile and explicit light preference persist",
+      "status": "PASS"
+    },
+    {
+      "name": "Greeting omits names and changes at noon while open",
+      "status": "PASS"
+    },
+    {
+      "name": "Landing preview uses anonymous greeting and premium surface",
+      "status": "PASS"
+    }
+  ]
+}

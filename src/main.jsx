@@ -6,6 +6,7 @@ import { AppStateProvider } from './state/AppState.jsx';
 import { SessionProvider } from './state/SessionState.jsx';
 import './styles.css';
 import './premium.css';
+import './alpine-light.css';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>

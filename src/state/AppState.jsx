@@ -403,8 +403,8 @@ function normalizeState(payload) {
   return {
     user: source.user ? structuredClone(source.user) : null,
     // Apply the redesigned default once; later appearance choices stay intact.
-    themeVersion: 2,
-    themeMode: source.themeVersion === 2 ? normalizeThemeMode(source.themeMode) : 'dark',
+    themeVersion: 3,
+    themeMode: source.themeVersion === 3 ? normalizeThemeMode(source.themeMode) : 'light',
     currency: normalizeCurrencyState(source.currency),
     accounts: cloneList(source.accounts),
     categories: mergeCategories(source.categories),
@@ -446,7 +446,7 @@ function readStoredAppState(userId) {
 function getPersistableState(state) {
   return {
     user: state.user ? structuredClone(state.user) : null,
-    themeVersion: 2,
+    themeVersion: 3,
     themeMode: normalizeThemeMode(state.themeMode),
     currency: getPersistableCurrencyState(state.currency),
     accounts: cloneList(state.accounts),
@@ -1313,6 +1313,7 @@ export function AppStateProvider({ children }) {
     document.documentElement.dataset.theme = resolvedTheme;
     document.documentElement.dataset.themeMode = state.themeMode;
     document.documentElement.style.colorScheme = resolvedTheme;
+    document.querySelector('meta[name="theme-color"]')?.setAttribute('content', resolvedTheme === 'dark' ? '#101115' : '#F5F8F9');
   }, [resolvedTheme, state.themeMode]);
 
   useEffect(() => {

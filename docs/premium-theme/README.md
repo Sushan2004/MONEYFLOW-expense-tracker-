@@ -1,5 +1,7 @@
 # Premium theme
 
+This records the original dark-theme redesign. The current default is [Alpine light](../alpine-theme/README.md); the purple-charcoal theme remains the dark option.
+
 The interface now uses charcoal (#101115), periwinkle (#96B2FF), restrained magenta (#E167DF), and Commissioner typography, based on the supplied visual references. Semantic tokens in `src/premium.css` cover both charcoal and light appearances.
 
 The dashboard and landing preview show only **Good morning** before noon and **Good afternoon** from noon onward, using device-local time. The shared greeting hook updates every 30 seconds and when the browser regains focus. Account data and original project credits remain intact.

@@ -13,7 +13,7 @@ const month = `${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,'0')}`
 const previous = new Date(now.getFullYear(),now.getMonth()-1,1);
 const lastMonth = `${previous.getFullYear()}-${String(previous.getMonth()+1).padStart(2,'0')}`;
 const data = {
-  user: { id:'verify-a', email:'verify-a@example.test', name:'Verification A' }, themeMode:'light', themeVersion:2, accounts:[],
+  user: { id:'verify-a', email:'verify-a@example.test', name:'Verification A' }, themeMode:'light', themeVersion:3, accounts:[],
   transactions:[
     {id:'food-a',merchant:'Test groceries',categoryId:'cat-food',amount:-300,type:'expense',date:`${month}-01`},
     {id:'food-b',merchant:'Test lunch',categoryId:'cat-food',amount:-120,type:'expense',date:`${month}-02`},
@@ -195,10 +195,10 @@ async function shot(page,name){await page.waitForTimeout(650);await page.screens
   await query(v.page,'goals');assert.match(await v.page.locator('.chat-notice').first().innerText(),/could not be saved/);assert.match(await v.page.locator('.chat-message--assistant').last().innerText(),/Test trip/);
  });
  await check('No browser runtime exceptions',async()=>assert.deepEqual([...d.errors,...w.errors,...m.errors,...v.errors],[]));
- await check('Premium default migrates once without changing financial records',async()=>{
+ await check('Alpine light default migrates once without changing financial records',async()=>{
   await page.evaluate(()=>{const k='et:app-state:verify-a';const s=JSON.parse(localStorage.getItem(k));delete s.themeVersion;s.themeMode='light';window.verifyTransactions=JSON.stringify(s.transactions);localStorage.setItem('verify-before-theme',window.verifyTransactions);localStorage.setItem(k,JSON.stringify(s));});
-  await page.goto(baseURL+'/dashboard');await page.waitForFunction(()=>document.documentElement.dataset.theme==='dark');
-  assert.equal(await page.evaluate(()=>getComputedStyle(document.documentElement).getPropertyValue('--page-bg').trim()),'#101115');
+  await page.goto(baseURL+'/dashboard');await page.waitForFunction(()=>document.documentElement.dataset.theme==='light');
+  assert.equal(await page.evaluate(()=>getComputedStyle(document.documentElement).getPropertyValue('--page-bg').trim()),'#F5F8F9');
   assert.equal(await page.evaluate(()=>JSON.stringify(JSON.parse(localStorage.getItem('et:app-state:verify-a')).transactions)===localStorage.getItem('verify-before-theme')),true);
   if(await page.locator('#moneyflow-chat').count())await page.getByRole('button',{name:'Close assistant',exact:true}).click();
   await shot(page,'premium-desktop');

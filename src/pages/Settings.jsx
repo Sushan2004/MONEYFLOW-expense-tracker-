@@ -21,8 +21,8 @@ const NOTIFICATION_ROWS = [
 const THEME_OPTIONS = [
   {
     value: 'light',
-    label: 'Light mode',
-    hint: 'Porcelain canvas with periwinkle accents',
+    label: 'Alpine light',
+    hint: 'Alpine white with glacier blue and sunrise accents',
     icon: 'sun',
   },
   {

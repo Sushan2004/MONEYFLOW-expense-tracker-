@@ -1,0 +1,47 @@
+/* Alpine light: white canvas, glacier blue and sunrise accents. Dark stays in premium.css. */
+html:not([data-theme="dark"]) {
+  --forest: #385C76; --emerald: #4B718B; --emerald-dark: #34566F;
+  --mint: #D2E4E8; --mint-wash: #EDF4F5; --sage: #E1EBEE;
+  --cream: #F5F8F9; --surface: #FFFFFF; --border: #DCE5E9;
+  --ink: #243C4D; --text-2: #536B78; --text-3: #647B86;
+  --page-bg: #F5F8F9; --surface-muted: #F1F6F7; --surface-soft: #EAF2F4;
+  --surface-elevated: #FFFFFF; --surface-elevated-alt: #F5F8F9;
+  --accent-surface: #426880; --accent-surface-hover: #34566F; --accent-ink: #FFFFFF;
+  --accent-soft-bg: #E4EEF2; --accent-soft-ink: #355B73; --accent-soft-border: #C8DCE4;
+  --focus-ring: #729DBB40; --focus-ring-soft: #729DBB18;
+  --cat-1: #DAE9EC; --cat-2: #BCD5DF; --cat-3: #9EBECF; --cat-4: #7FA4BE;
+  --cat-5: #638AA6; --cat-6: #4E728F; --cat-7: #E7B585;
+  --bar-track: #E1EBEF; --chart-tooltip-bg: #FFFFFF; --chart-tooltip-border: #D5E2E8;
+  --chart-tooltip-text: #243C4D; --chart-tooltip-muted: #536B78; --chart-center-secondary: #536B78;
+  --auth-accent-soft: #BCD5DF20; --auth-accent-border: #BCD5DF60; --auth-accent-divider: #BCD5DF60; --auth-accent-text: #355B73;
+  --shadow-soft: 0 5px 25px #24475E07; --panel-shadow: 0 24px 80px #24475E22;
+  color-scheme: light;
+}
+html:not([data-theme="dark"]) .sidebar { background: #FFFFFF; }
+html:not([data-theme="dark"]) :is(.dashboard-hero, .balance, .landing-preview__dashboard-hero) {
+  background-image: linear-gradient(100deg, rgba(255,255,255,.97) 0%, rgba(250,253,253,.93) 36%, rgba(239,246,247,.58) 70%, rgba(243,247,247,.32)), url('/images/alpine-light.png');
+  background-size: cover;
+  background-position: center, center 36%;
+  border-color: #D5E2E8;
+  color: var(--ink);
+  box-shadow: 0 10px 35px #34566F0B;
+}
+html:not([data-theme="dark"]) :is(.dashboard-hero__headline, .dashboard-hero__net, .landing-preview__dashboard-title, .landing-preview__dashboard-total, .balance__amount) { color: #243C4D; }
+html:not([data-theme="dark"]) :is(.dashboard-hero__copy, .landing-preview__dashboard-sub, .balance__label, .balance__stat-label) { color: #455F70; }
+html:not([data-theme="dark"]) :is(.dashboard-hero__eyebrow, .landing-preview__dashboard-eyebrow) { color: #426880; }
+html:not([data-theme="dark"]) :is(.dashboard-metric, .landing-preview__dashboard-metric) { background: rgba(255,255,255,.88); border-color: #D4E0E5; }
+html:not([data-theme="dark"]) :is(.dashboard-metric__label, .landing-preview__dashboard-metric-label) { color: #536B78; }
+html:not([data-theme="dark"]) :is(.dashboard-metric__value, .landing-preview__dashboard-metric-value, .balance__stat-value) { color: #243C4D; }
+html:not([data-theme="dark"]) .dashboard-metric--income .dashboard-metric__value { color: #426880; }
+html:not([data-theme="dark"]) .dashboard-metric--spending .dashboard-metric__value { color: #9B583D; }
+html:not([data-theme="dark"]) .dashboard-metric--saved .dashboard-metric__value { color: #3F726F; }
+html:not([data-theme="dark"]) :is(.landing-page__blob, .auth-page__blob) { background: #91B4C5; opacity: .16; }
+html:not([data-theme="dark"]) :is(.landing-page__blob--3, .auth-page__blob--3) { background: #EAC297; }
+html:not([data-theme="dark"]) .chat-welcome-mark { background: #E7F0F2; color: #426880; }
+.appearance-option__preview--light { background: #F5F8F9; border-color: #D5E2E8; }
+@media (max-width: 639px) {
+  html:not([data-theme="dark"]) .dashboard-hero {
+    background-image: linear-gradient(100deg, rgba(255,255,255,.95), rgba(248,252,252,.72)), url('/images/alpine-light.png');
+    background-position: center, 58% top;
+  }
+}
