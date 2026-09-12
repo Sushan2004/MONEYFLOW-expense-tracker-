@@ -1,0 +1,14 @@
+{
+  "checks": [
+    "All three sample preview buttons update the card and breakdown",
+    "Feature navigation reveals content",
+    "FAQ opens and explains local storage",
+    "Motion control pauses and resumes ambient animation",
+    "Signup and login links open the correct auth modes",
+    "No horizontal overflow at 320, 390, 768, 1024 and 1440px; preview targets at least 44px",
+    "Reduced motion keeps content and chart visible with animation disabled",
+    "Dark theme uses charcoal surfaces and preserves readable preview",
+    "No browser runtime errors"
+  ],
+  "errors": []
+}

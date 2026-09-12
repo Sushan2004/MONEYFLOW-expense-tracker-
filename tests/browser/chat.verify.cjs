@@ -216,8 +216,8 @@ async function shot(page,name){await page.waitForTimeout(650);await page.screens
  await check('Landing preview uses anonymous greeting and premium surface',async()=>{
   await page.evaluate(()=>{const k='et:app-state:verify-a';const s=JSON.parse(localStorage.getItem(k));s.themeMode='dark';localStorage.setItem(k,JSON.stringify(s));});
   await page.setViewportSize({width:1440,height:1000});await page.goto(baseURL+'/#preview');
-  assert.equal(await page.locator('.landing-preview__dashboard-greeting').innerText(),'Good afternoon');
-  await page.locator('.landing-preview__dashboard').screenshot({path:path.join(output,'premium-landing-preview.png')});
+  assert.equal(await page.locator('.mf-greeting').innerText(),'Good afternoon');
+  await page.locator('.mf-phone').screenshot({path:path.join(output,'premium-landing-preview.png')});
  });
  await browser.close();
  fs.writeFileSync(path.join(output,'results.json'),JSON.stringify({date:new Date().toISOString(),browser:'Chrome headless',results},null,2));

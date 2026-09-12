@@ -6,6 +6,8 @@ A React application for manually tracking income, expenses, category budgets, an
 
 ## Features
 
+- Animated welcome page with an interactive sample preview, feature overview, and FAQs.
+
 - Responsive Moneyflow chat: full-screen mobile conversation and resizable desktop dock, with saved threads, data cards, and optional voice input.
 - Local demo account creation, login, and logout.
 - Add, edit, duplicate, delete, search, and filter transactions.
@@ -18,7 +20,7 @@ A React application for manually tracking income, expenses, category budgets, an
 - Export data as CSV or JSON.
 - Optional currency conversion through UniRate and merchant logos through Logo.dev.
 
-See [current theme previews and verification](docs/alpine-theme/README.md).
+See [current theme previews and verification](docs/alpine-theme/README.md) and [the welcome-page redesign](docs/landing-redesign/README.md).
 
 ## Technology
 
